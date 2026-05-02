@@ -471,7 +471,7 @@ const ConsistentHashing = () => {
         </div>
       </div>
 
-      <SlideNav prev="/load-balancing" next="/reliability" current={6} total={7} />
+      <SlideNav prev="/load-balancing" next="/reliability" />
     </main>
   );
 };

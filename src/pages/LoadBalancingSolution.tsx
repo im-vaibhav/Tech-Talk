@@ -462,7 +462,7 @@ const LoadBalancingSolution = () => {
           </div>
         </div>
 
-        <SlideNav prev="/scalability" next="/consistent-hashing" current={5} total={6} />
+        <SlideNav prev="/scalability" next="/consistent-hashing" />
       </main>
     </TooltipProvider>
   );

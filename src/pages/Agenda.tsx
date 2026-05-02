@@ -147,7 +147,7 @@ const Agenda = () => {
           </footer>
         </div>
 
-        <SlideNav prev="/" next="/distributed" current={2} total={4} />
+        <SlideNav prev="/" next="/distributed" />
       </main>
     </TooltipProvider>
   );

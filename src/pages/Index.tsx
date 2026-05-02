@@ -91,7 +91,7 @@ const Index = () => {
         </footer>
       </div>
 
-      <SlideNav next="/agenda" current={1} total={3} />
+      <SlideNav next="/agenda" />
     </main>
   );
 };

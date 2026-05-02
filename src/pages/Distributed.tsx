@@ -615,7 +615,7 @@ const Distributed = () => {
           </div>
         </div>
 
-        <SlideNav prev="/agenda" next="/scalability" current={3} total={4} />
+        <SlideNav prev="/agenda" next="/scalability" />
       </main>
     </TooltipProvider>
   );
