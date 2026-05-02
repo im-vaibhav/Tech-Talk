@@ -74,26 +74,13 @@ const Agenda = () => {
 
               {items.map((item, idx) => {
                 const isHighlight = item.variant === "highlight";
-                const groupLabel =
-                  idx === 0 ? "Theory" : idx === 3 ? "Practice & Demo" : null;
-                const showDivider = idx === 3;
+                const groupLabel = null;
+                const showDivider = false;
                 const delay = 0.6 + idx * 0.2;
 
                 return (
                   <div key={item.n} className="contents">
-                    {/* Group transition divider */}
-                    {showDivider && (
-                      <div
-                        className="col-span-3 my-3 flex items-center gap-3 opacity-0"
-                        style={{ animation: "fade-in-up 0.6s 1.3s ease-out both" }}
-                      >
-                        <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[hsl(var(--blue)/0.6)] to-transparent" />
-                        <span className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
-                          Theory → Practice
-                        </span>
-                        <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[hsl(var(--blue)/0.6)] to-transparent" />
-                      </div>
-                    )}
+
 
                     {/* Node column */}
                     <div
@@ -131,28 +118,14 @@ const Agenda = () => {
                         className={`font-semibold text-foreground ${isHighlight ? "text-2xl lg:text-3xl" : "text-xl lg:text-2xl"}`}
                       >
                         {item.title}
-                        {isHighlight && (
-                          <span className="ml-3 rounded-full border border-[hsl(var(--teal-glow))] bg-[hsl(var(--teal-glow)/0.12)] px-2 py-0.5 align-middle text-[10px] font-medium uppercase tracking-widest text-[hsl(var(--teal-glow))]">
-                            Main Event
-                          </span>
-                        )}
                       </h3>
                       <p className="mt-1 text-sm font-light text-muted-foreground lg:text-base">
                         {item.desc}
                       </p>
                     </div>
 
-                    {/* Group label column */}
-                    <div className="flex items-center justify-end pr-2">
-                      {groupLabel && (
-                        <span
-                          className="rounded-full border border-border/50 bg-card/40 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-muted-foreground opacity-0 backdrop-blur-sm"
-                          style={{ animation: `fade-in-right 0.6s ${delay + 0.1}s ease-out both` }}
-                        >
-                          {groupLabel}
-                        </span>
-                      )}
-                    </div>
+                    {/* Empty column for layout consistency */}
+                    <div className="flex items-center justify-end pr-2" />
                   </div>
                 );
               })}
@@ -174,7 +147,7 @@ const Agenda = () => {
           </footer>
         </div>
 
-        <SlideNav prev="/" next="/distributed" current={2} total={3} />
+        <SlideNav prev="/" next="/distributed" current={2} total={4} />
       </main>
     </TooltipProvider>
   );

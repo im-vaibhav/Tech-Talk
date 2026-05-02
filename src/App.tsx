@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Agenda from "./pages/Agenda.tsx";
 import Distributed from "./pages/Distributed.tsx";
+import ScalabilityProblem from "./pages/ScalabilityProblem.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/distributed" element={<Distributed />} />
+          <Route path="/scalability" element={<ScalabilityProblem />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
