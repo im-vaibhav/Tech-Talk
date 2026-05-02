@@ -7,6 +7,9 @@ import Index from "./pages/Index.tsx";
 import Agenda from "./pages/Agenda.tsx";
 import Distributed from "./pages/Distributed.tsx";
 import ScalabilityProblem from "./pages/ScalabilityProblem.tsx";
+import LoadBalancingSolution from "./pages/LoadBalancingSolution.tsx";
+import ConsistentHashing from "./pages/ConsistentHashing.tsx";
+import ReliabilityProblem from "./pages/ReliabilityProblem.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -22,7 +25,9 @@ const App = () => (
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/distributed" element={<Distributed />} />
           <Route path="/scalability" element={<ScalabilityProblem />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/load-balancing" element={<LoadBalancingSolution />} />
+          <Route path="/consistent-hashing" element={<ConsistentHashing />} />
+          <Route path="/reliability" element={<ReliabilityProblem />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

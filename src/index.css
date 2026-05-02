@@ -177,7 +177,54 @@
   50% { fill: hsl(var(--destructive)); opacity: 0.9; }
 }
 
-/* Scalability Problem - Simplified Request Flow Animations */
+/* Load Balancing Solution Animations */
+@keyframes server-overload-lb {
+  0% { 
+    fill: hsl(var(--teal));
+    stroke: hsl(var(--teal-glow));
+    filter: drop-shadow(0 0 20px hsl(var(--teal-glow) / 0.6));
+  }
+  50% {
+    fill: hsl(28 90% 60%);
+    stroke: hsl(28 90% 70%);
+    filter: drop-shadow(0 0 25px hsl(28 90% 60% / 0.7));
+  }
+  100% { 
+    fill: hsl(var(--destructive));
+    stroke: hsl(var(--destructive));
+    filter: drop-shadow(0 0 30px hsl(var(--destructive) / 0.8));
+  }
+}
+
+@keyframes request-overload {
+  0% { left: 10%; opacity: 0; }
+  20% { opacity: 0.8; }
+  60% { left: 48%; opacity: 0.7; }
+  80% { left: 50%; opacity: 0.4; }
+  100% { left: 52%; opacity: 0; }
+}
+
+@keyframes request-bounce {
+  0%, 100% { transform: translateX(0); opacity: 0; }
+  20% { opacity: 1; }
+  50% { transform: translateX(-8px); opacity: 0.8; }
+  80% { opacity: 0.4; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    filter: url(#lb-glow) drop-shadow(0 0 15px hsl(var(--teal-glow) / 0.6));
+  }
+  50% { 
+    filter: url(#lb-glow) drop-shadow(0 0 25px hsl(var(--teal-glow) / 0.9));
+  }
+}
+
+@keyframes slide-up-stagger {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes dash-flow-simple {
   from { stroke-dashoffset: 30; }
   to { stroke-dashoffset: 0; }
@@ -345,6 +392,192 @@
 @keyframes bar-stress {
   0%, 100% { transform: scaleY(1); opacity: 0.9; }
   50% { transform: scaleY(1.15); opacity: 1; }
+}
+
+/* Consistent Hashing Animations */
+@keyframes draw-ring {
+  from { stroke-dashoffset: 942; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes draw-connection {
+  from { stroke-dashoffset: 300; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes server-appear {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes chaos-shuffle {
+  0%, 100% { transform: translate(0, 0); }  25% { transform: translate(-2px, -2px); }
+  50% { transform: translate(2px, 2px); }
+  75% { transform: translate(-2px, 2px); }
+}
+
+@keyframes key-move {
+  0% { fill: white; opacity: 0.85; }
+  50% { fill: hsl(var(--teal-glow)); opacity: 1; r: 6; }
+  100% { fill: white; opacity: 0.85; r: 4.5; }
+}
+
+@keyframes key-stay {
+  0% { opacity: 0.85; r: 4.5; }
+  50% { opacity: 1; r: 5; filter: drop-shadow(0 0 6px white); }
+  100% { opacity: 1; r: 5; filter: drop-shadow(0 0 4px white); }
+}
+
+@keyframes shake-crash {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-8px) rotate(-2deg); }
+  20% { transform: translateX(8px) rotate(2deg); }
+  30% { transform: translateX(-6px) rotate(-1deg); }
+  40% { transform: translateX(6px) rotate(1deg); }
+  50% { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes crash-dramatic {
+  0% { 
+    opacity: 0;
+    transform: scale(0.3) rotate(-20deg);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.3) rotate(10deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-5deg);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes blink-light {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes progress-fill-slow {
+  0% { width: 45px; }
+  50% { width: 70px; }
+  100% { width: 45px; }
+}
+
+@keyframes progress-fill {
+  0% { width: 35px; }
+  50% { width: 55px; }
+  100% { width: 35px; }
+}
+
+@keyframes crash-appear {
+  0% { opacity: 0; transform: scale(0.4) rotate(-15deg); }
+  40% { opacity: 1; transform: scale(1.15) rotate(5deg); }
+  70% { transform: scale(0.95) rotate(-2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ========================================
+   REFINED ANIMATION SYSTEM
+   Purpose: Clear, smooth, professional transitions
+   Timing: cubic-bezier(0.4, 0, 0.2, 1) for natural feel
+======================================== */
+
+/* Core fade and scale animations */
+@keyframes fade-in-smooth {
+  from { 
+    opacity: 0; 
+    transform: translateY(8px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-scale-smooth {
+  from { 
+    opacity: 0; 
+    transform: scale(0.94);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up-smooth {
+  from { 
+    opacity: 0; 
+    transform: translateY(16px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+/* Flow animations - purposeful and clear */
+@keyframes flow-smooth {
+  from { 
+    stroke-dashoffset: 24;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  to { 
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}
+
+@keyframes flow-congested {
+  0% { 
+    stroke-dashoffset: 24;
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% { 
+    stroke-dashoffset: 0;
+    opacity: 0.6;
+  }
+}
+
+/* Subtle pulse for emphasis */
+@keyframes pulse-glow-smooth {
+  0%, 100% { 
+    filter: url(#glow-ring) drop-shadow(0 0 12px hsl(var(--teal-glow) / 0.4));
+  }
+  50% { 
+    filter: url(#glow-ring) drop-shadow(0 0 20px hsl(var(--teal-glow) / 0.6));
+  }
+}
+
+@keyframes server-pulse-slow {
+  0%, 100% { 
+    transform: scale(1);
+  }
+  50% { 
+    transform: scale(1.03);
+  }
+}
+
+/* Stress indicator - clear but not distracting */
+@keyframes stress-ring-smooth {
+  0% { 
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.25;
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0;
+  }
 }
 
 .anim-title { animation: fade-in-left 0.8s 0.1s ease-out both; }

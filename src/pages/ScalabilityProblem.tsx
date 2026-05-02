@@ -403,7 +403,7 @@ const ScalabilityProblem = () => {
         </div>
       </div>
 
-      <SlideNav prev="/distributed" next="/solution" current={4} total={4} />
+      <SlideNav prev="/distributed" next="/load-balancing" current={4} total={5} />
     </main>
   );
 };
