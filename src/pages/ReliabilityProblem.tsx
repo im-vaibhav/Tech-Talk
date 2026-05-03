@@ -425,13 +425,7 @@ const ReliabilityProblem = () => {
 
         {/* Bottom Row */}
         {phase >= 10 && (
-          <div className="mt-6 flex items-end justify-between">
-            <p
-              className="max-w-md text-xs italic text-muted-foreground opacity-0"
-              style={{ animation: "fade-in-smooth 0.8s 1.5s ease-out both" }}
-            >
-              "You're writing an important email. Power goes out. Did it save? Was it the complete email or just half?"
-            </p>
+          <div className="mt-6 flex items-end justify-end">
             <div
               className="opacity-0"
               style={{ animation: "fade-in-smooth 0.8s 1.8s ease-out both" }}

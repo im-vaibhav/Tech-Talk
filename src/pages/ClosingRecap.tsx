@@ -130,11 +130,11 @@ export default function ClosingRecap() {
                 </div>
               ))}
             </div>
-            {/* Connecting line */}
-            <div className="relative -mt-[52px] mx-auto h-[2px] w-[80%]" style={{ backgroundColor: "hsl(186 85% 38% / 0.3)" }}>
+            {/* Connecting line (moved down to prevent overlay with timeline text) */}
+            <div className="relative mt-4 mx-auto h-[2px] w-[80%]" style={{ backgroundColor: "hsl(186 85% 38% / 0.3)" }}>
               <div className="absolute left-0 top-0 h-full w-0 opacity-0" style={{ backgroundColor: TEAL_GLOW, ...fade(5.7), animationName: "grow-line" }} />
             </div>
-            <p className="mt-8 text-center text-[10px] font-semibold text-muted-foreground opacity-0" style={fade(6.8)}>
+            <p className="mt-10 text-center text-[10px] font-semibold text-muted-foreground opacity-0" style={fade(6.8)}>
               This is not a concept. This is a <span className="text-foreground">real delivery plan</span>.
             </p>
           </div>

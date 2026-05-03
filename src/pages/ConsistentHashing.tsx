@@ -26,9 +26,9 @@ const ConsistentHashing = () => {
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  const centerX = 250;
-  const centerY = 220;
-  const radius = 150;
+  const centerX = 280;
+  const centerY = 280;
+  const radius = 200;
 
   // Servers positioned like the book images
   const initialServers = [
@@ -171,7 +171,7 @@ const ConsistentHashing = () => {
 
             {/* Center: Hash Ring */}
             <div className="relative">
-              <svg viewBox="0 0 500 500" className="h-[480px] w-[480px]">
+              <svg viewBox="0 0 560 560" className="h-[560px] w-[560px]">
                 <defs>
                   <filter id="glow">
                     <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -455,13 +455,7 @@ const ConsistentHashing = () => {
         </section>
 
         {/* Bottom */}
-        <div className="mt-3 flex items-end justify-between">
-          <p
-            className="max-w-md text-xs italic text-muted-foreground opacity-0"
-            style={{ animation: "fade-in-smooth 0.6s 25s ease-out both" }}
-          >
-            "A highway exits system: if one exit closes, only nearby cars reroute. The rest continue normally."
-          </p>
+        <div className="mt-3 flex items-end justify-end">
           <div
             className="opacity-0"
             style={{ animation: "fade-in-smooth 0.6s 25.3s ease-out both" }}

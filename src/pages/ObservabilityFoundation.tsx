@@ -289,11 +289,7 @@ export default function ObservabilityFoundation() {
         </section>
 
         {/* Footer */}
-        <footer className="mt-4 flex items-end justify-between">
-          <p className="max-w-3xl text-xs italic text-muted-foreground opacity-0" style={fade(8.0)}>
-            "We installed the dashboard in the car. Now we can see speed, fuel, temperature. But we still need the driver to constantly watch it and react.
-            What if the car had a co-pilot?"
-          </p>
+        <footer className="mt-4 flex items-end justify-end">
           <div className="opacity-0" style={fade(8.3)}>
             <EpamLogo />
           </div>

@@ -64,10 +64,10 @@ export default function AgenticOps() {
         </div>
 
         {/* Main content: Architecture + Principles */}
-        <section className="flex flex-1 gap-5">
+        <section className="flex flex-1 gap-8">
           {/* Architecture Diagram */}
-          <div className="flex-1 rounded-xl border border-border/40 bg-card/20 p-5 backdrop-blur-sm">
-            <div className="flex flex-col items-center gap-5">
+          <div className="flex-1 rounded-xl border border-border/40 bg-card/20 p-6 backdrop-blur-sm">
+            <div className="flex flex-col items-center gap-7">
 
               {/* LAYER 1: Human / Operator */}
               <div className="opacity-0" style={fade(1.5)}>
@@ -81,7 +81,7 @@ export default function AgenticOps() {
               </div>
 
               {/* Arrows from Operator to Agent */}
-              <div className="flex items-center gap-12 opacity-0" style={fade(1.8)}>
+              <div className="flex items-center gap-16 opacity-0" style={fade(1.8)}>
                 <div className="flex flex-col items-center">
                   <span className="text-[9px] text-muted-foreground">ask question</span>
                   <span className="text-lg text-[hsl(var(--teal-glow))]">↓</span>
@@ -93,9 +93,9 @@ export default function AgenticOps() {
               </div>
 
               {/* LAYER 2: Ops Agent */}
-              <div className="w-full max-w-xl opacity-0" style={fade(2.5)}>
-                <div className="rounded-xl border-2 border-[hsl(var(--teal-glow))] bg-[hsl(220_25%_14%/_0.7)] p-4" style={{ boxShadow: `0 0 20px hsl(186 85% 38% / 0.2)` }}>
-                  <div className="mb-2 flex items-center justify-between">
+              <div className="w-full max-w-2xl opacity-0" style={fade(2.5)}>
+                <div className="rounded-xl border-2 border-[hsl(var(--teal-glow))] bg-[hsl(220_25%_14%/_0.7)] p-5" style={{ boxShadow: `0 0 20px hsl(186 85% 38% / 0.2)` }}>
+                  <div className="mb-3 flex items-center justify-between gap-4">
                     <h3 className="text-sm font-bold text-foreground">Ops Agent</h3>
                     <div className="flex gap-2">
                       <span className="rounded-full bg-[hsl(var(--teal)/0.2)] px-2 py-0.5 text-[8px] font-semibold text-[hsl(var(--teal-glow))]">
@@ -106,7 +106,7 @@ export default function AgenticOps() {
                       </span>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-[10px] text-muted-foreground">
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[10px] text-muted-foreground">
                     <p className="opacity-0" style={fade(2.8)}>• Periodic health monitor (every 5 min)</p>
                     <p className="opacity-0" style={fade(3.0)}>• Alert webhook receiver</p>
                     <p className="opacity-0" style={fade(3.2)}>• Manual query handler (plain English)</p>
@@ -117,7 +117,7 @@ export default function AgenticOps() {
               </div>
 
               {/* Arrows from Agent to MCP servers */}
-              <div className="flex w-full max-w-xl items-center justify-around opacity-0" style={fade(4.5)}>
+              <div className="flex w-full max-w-2xl items-center justify-around opacity-0" style={fade(4.5)}>
                 <div className="flex flex-col items-center">
                   <span className="text-[9px] font-semibold" style={{ color: TEAL_GLOW }}>observe</span>
                   <span className="text-lg text-[hsl(var(--teal-glow))]">↓</span>
@@ -129,15 +129,15 @@ export default function AgenticOps() {
               </div>
 
               {/* LAYER 3: Two MCP Servers */}
-              <div className="flex w-full gap-4">
+              <div className="flex w-full gap-6">
                 {/* MCP Observe */}
                 <div className="flex-1 opacity-0" style={fade(5.0)}>
-                  <div className="rounded-xl border border-[hsl(var(--teal-glow)/0.6)] bg-[hsl(220_25%_14%/_0.6)] p-3">
+                  <div className="rounded-xl border border-[hsl(var(--teal-glow)/0.6)] bg-[hsl(220_25%_14%/_0.6)] p-4">
                     <div className="mb-2 flex items-center justify-between">
                       <h4 className="text-xs font-bold text-foreground">MCP Observe</h4>
                       <span className="rounded-full border border-[hsl(var(--teal-glow)/0.4)] px-2 py-0.5 text-[8px] text-[hsl(var(--teal-glow))]">read-only</span>
                     </div>
-                    <ul className="space-y-1 text-[9px] text-muted-foreground">
+                    <ul className="space-y-1.5 text-[9px] text-muted-foreground">
                       {[
                         "Prometheus API (SLOs, latency, hit rate)",
                         "Loki API (logs, correlation ID)",
@@ -161,12 +161,12 @@ export default function AgenticOps() {
 
                 {/* MCP Act */}
                 <div className="flex-1 opacity-0" style={fade(6.2)}>
-                  <div className="rounded-xl border-2 border-dashed bg-[hsl(220_25%_14%/_0.6)] p-3" style={{ borderColor: "hsl(28 90% 60% / 0.5)" }}>
-                    <div className="mb-2 flex items-center justify-between">
+                  <div className="rounded-xl border-2 border-dashed bg-[hsl(220_25%_14%/_0.6)] p-4" style={{ borderColor: "hsl(28 90% 60% / 0.5)" }}>
+                    <div className="mb-3 flex items-center justify-between gap-4">
                       <h4 className="text-xs font-bold text-foreground">MCP Act</h4>
                       <span className="rounded-full border px-2 py-0.5 text-[8px]" style={{ borderColor: "hsl(28 90% 60% / 0.5)", color: ORANGE }}>gated actions</span>
                     </div>
-                    <ul className="space-y-1 text-[9px] text-muted-foreground">
+                    <ul className="space-y-1.5 text-[9px] text-muted-foreground">
                       {[
                         { text: "Deregister dead node", risk: "low" },
                         { text: "Force SWIM rejoin", risk: "low" },
@@ -236,11 +236,7 @@ export default function AgenticOps() {
         </section>
 
         {/* Footer */}
-        <footer className="mt-4 flex items-end justify-between">
-          <p className="max-w-2xl text-xs italic text-muted-foreground opacity-0" style={fade(9.0)}>
-            "MCP Observe is the diagnostic lab. MCP Act is the pharmacy. The Ops Agent is the doctor.
-            But YOU sign consent before any treatment."
-          </p>
+        <footer className="mt-4 flex items-end justify-end">
           <div className="opacity-0" style={fade(9.3)}>
             <EpamLogo />
           </div>

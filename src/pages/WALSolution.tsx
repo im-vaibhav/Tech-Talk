@@ -393,10 +393,7 @@ const WALSolution = () => {
 
         {/* Bottom */}
         {phase >= 18 && (
-          <div className="mt-4 flex items-end justify-between">
-            <p className="max-w-lg text-xs italic text-muted-foreground opacity-0" style={{ animation: "fade-in-smooth 0.8s 1s ease-out both" }}>
-              "Before making any change, write it in your diary. If you forget what you were doing, read the diary and continue from where you left off."
-            </p>
+          <div className="mt-4 flex items-end justify-end">
             <div className="opacity-0" style={{ animation: "fade-in-smooth 0.8s 1.3s ease-out both" }}>
               <EpamLogo />
             </div>

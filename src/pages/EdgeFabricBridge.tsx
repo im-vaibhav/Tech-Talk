@@ -501,10 +501,7 @@ const EdgeFabricBridge = () => {
 
         {/* Quote + logo */}
         {step >= 18 && (
-          <footer className="mt-6 flex items-end justify-between">
-            <p className="max-w-2xl text-xs italic text-muted-foreground opacity-0" style={{ animation: "fade-in-smooth 0.6s ease-out both" }}>
-              "We built the car. Made it fast, safe, and tough. But we haven't installed the dashboard. And we don't have a co-pilot."
-            </p>
+          <footer className="mt-6 flex items-end justify-end">
             {step >= 19 && (
               <div className="opacity-0" style={{ animation: "fade-in-smooth 0.6s 0.2s ease-out both" }}>
                 <EpamLogo />

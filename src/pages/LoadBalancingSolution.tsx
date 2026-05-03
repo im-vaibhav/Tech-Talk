@@ -150,12 +150,6 @@ const LoadBalancingSolution = () => {
                   </div>
                 </div>
 
-                <p
-                  className="mt-8 text-center text-xs italic text-muted-foreground opacity-0"
-                  style={{ animation: "fade-in-up 0.5s 3.5s ease-out both" }}
-                >
-                  Single point of failure
-                </p>
               </div>
 
               {/* Transition Line */}
@@ -353,12 +347,6 @@ const LoadBalancingSolution = () => {
                   )}
                 </div>
 
-                <p
-                  className="mt-6 text-center text-xs italic text-muted-foreground opacity-0"
-                  style={{ animation: phase >= 3 ? "fade-in-up 0.5s 2.3s ease-out both" : "none" }}
-                >
-                  Even distribution, no single bottleneck
-                </p>
               </div>
             </div>
           </section>
@@ -446,13 +434,7 @@ const LoadBalancingSolution = () => {
           </section>
 
           {/* Bottom Row */}
-          <div className="mt-4 flex items-end justify-between">
-            <p
-              className="max-w-md text-xs italic text-muted-foreground opacity-0"
-              style={{ animation: "fade-in-left 0.6s 10s ease-out both" }}
-            >
-              "A hotel receptionist who assigns guests to available rooms. She never sends everyone to Room 101."
-            </p>
+          <div className="mt-4 flex items-end justify-end">
             <div
               className="opacity-0"
               style={{ animation: "fade-in-right 0.6s 10.3s ease-out both" }}

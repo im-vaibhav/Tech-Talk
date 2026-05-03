@@ -60,9 +60,6 @@ export default function AgentTriggerModes() {
                 </p>
               </div>
 
-              <p className="mt-auto text-[9px] italic text-muted-foreground opacity-0" style={fade(2.5)}>
-                "The nurse doing regular patient rounds"
-              </p>
             </div>
           </div>
 
@@ -94,9 +91,6 @@ export default function AgentTriggerModes() {
                 ))}
               </ol>
 
-              <p className="mt-auto text-[9px] italic text-muted-foreground opacity-0" style={fade(5.0)}>
-                "The ER responding to a cardiac alarm"
-              </p>
             </div>
           </div>
 
@@ -121,9 +115,6 @@ export default function AgentTriggerModes() {
                 Agent selects correct MCP Observe tools, runs them, returns plain-English answer. No PromQL. No SSH.
               </p>
 
-              <p className="mt-auto text-[9px] italic text-muted-foreground opacity-0" style={fade(7.0)}>
-                "Patient calling the doctor's hotline"
-              </p>
             </div>
           </div>
         </section>

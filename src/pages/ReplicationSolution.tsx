@@ -315,10 +315,7 @@ const ReplicationSolution = () => {
 
         {/* Bottom */}
         {phase >= 16 && (
-          <div className="mt-4 flex items-end justify-between">
-            <p className="max-w-md text-xs italic text-muted-foreground opacity-0" style={{ animation: "fade-in-smooth 0.8s 1s ease-out both" }}>
-              "Photocopy every important document. Store copies in different offices. If one office burns down, the others still have it."
-            </p>
+          <div className="mt-4 flex items-end justify-end">
             <div className="opacity-0" style={{ animation: "fade-in-smooth 0.8s 1.3s ease-out both" }}>
               <EpamLogo />
             </div>

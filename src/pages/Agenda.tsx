@@ -133,14 +133,7 @@ const Agenda = () => {
           </section>
 
           {/* Footer */}
-          <footer className="mt-8 flex items-end justify-between gap-6 border-t border-border/40 pt-6">
-            <p
-              className="flex-1 text-center text-sm italic text-muted-foreground opacity-0"
-              style={{ animation: "fade-in-up 0.6s 2.2s ease-out both" }}
-            >
-              For each pillar: <span className="text-foreground">What's the PROBLEM?</span> then{" "}
-              <span className="text-foreground">What's the SOLUTION?</span>
-            </p>
+          <footer className="mt-8 flex items-end justify-end gap-6 border-t border-border/40 pt-6">
             <div className="opacity-0" style={{ animation: "fade-in-right 0.6s 2.4s ease-out both" }}>
               <EpamLogo />
             </div>

@@ -200,11 +200,7 @@ export default function HumanApproval() {
         </section>
 
         {/* Footer */}
-        <footer className="mt-3 flex items-end justify-between">
-          <p className="max-w-2xl text-[10px] italic text-muted-foreground opacity-0" style={fade(9.5)}>
-            "A self-driving car that suggests lane changes but always asks before turning the wheel.
-            If you don't respond in 30 minutes, the suggestion disappears. Every decision is recorded in a black box."
-          </p>
+        <footer className="mt-3 flex items-end justify-end">
           <div className="opacity-0" style={fade(9.7)}>
             <EpamLogo />
           </div>

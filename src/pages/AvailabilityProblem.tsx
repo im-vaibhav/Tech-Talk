@@ -377,11 +377,7 @@ const AvailabilityProblem = () => {
 
         {/* Bottom Row */}
         {phase >= 10 && (
-          <div className="mt-6 flex items-end justify-between opacity-0" style={{ animation: "fade-in-smooth 1s ease-out both" }}>
-            <p className="max-w-md text-xs italic text-muted-foreground">
-              "A highway lane closes. No signs, no rerouting. Traffic keeps piling into the blocked lane. 
-              By the time someone notices, half the highway is gridlocked."
-            </p>
+          <div className="mt-6 flex items-end justify-end opacity-0" style={{ animation: "fade-in-smooth 1s ease-out both" }}>
             <div>
               <EpamLogo />
             </div>
