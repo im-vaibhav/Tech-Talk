@@ -156,7 +156,7 @@ export default function ClosingRecap() {
             <p className="text-lg font-bold text-foreground">Thank You</p>
           </div>
           <div className="text-center opacity-0" style={fade(8.0)}>
-            <p className="text-sm font-semibold text-foreground">Saad Ahmad | Vaibhav Raj</p>
+            <p className="text-sm font-semibold text-foreground">Saad Ahmad | Vaibhav Raj | Jakka Abhilash Reddy</p>
           </div>
           <div className="flex items-center gap-4 opacity-0" style={fade(8.3)}>
             <span className="rounded-full border border-[hsl(var(--teal-glow)/0.5)] px-3 py-1 text-xs font-bold" style={{ color: TEAL_GLOW }}>
