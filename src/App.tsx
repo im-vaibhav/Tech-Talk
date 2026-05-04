@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Agenda from "./pages/Agenda.tsx";
+import CAPTheorem from "./pages/CAPTheorem.tsx";
 import Distributed from "./pages/Distributed.tsx";
 import ScalabilityProblem from "./pages/ScalabilityProblem.tsx";
 import LoadBalancingSolution from "./pages/LoadBalancingSolution.tsx";
@@ -34,6 +35,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/agenda" element={<Agenda />} />
+          <Route path="/cap" element={<CAPTheorem />} />
           <Route path="/distributed" element={<Distributed />} />
           <Route path="/scalability" element={<ScalabilityProblem />} />
           <Route path="/load-balancing" element={<LoadBalancingSolution />} />

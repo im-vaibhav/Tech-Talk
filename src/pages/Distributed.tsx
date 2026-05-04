@@ -1,12 +1,7 @@
 import EpamLogo from "@/components/EpamLogo";
 import SlideBackdrop from "@/components/SlideBackdrop";
 import SlideNav from "@/components/SlideNav";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 const challenges = [
   { title: "Scale", desc: "How to add capacity without disruption?", hint: "Consistent Hashing", icon: "📈" },
@@ -16,8 +11,7 @@ const challenges = [
 
 const Distributed = () => {
   return (
-    <TooltipProvider delayDuration={150}>
-      <main className="relative min-h-screen w-full overflow-hidden bg-hero">
+    <main className="relative min-h-screen w-full overflow-hidden bg-hero">
         <SlideBackdrop />
       
         {/* Logo in top-right corner */}
@@ -34,7 +28,7 @@ const Distributed = () => {
             <div className="mb-3 flex items-center gap-3">
               <span className="h-px w-12 bg-gradient-to-r from-transparent via-[hsl(var(--teal-glow))] to-transparent" />
               <span className="text-xs font-medium uppercase tracking-[0.3em] text-[hsl(var(--teal-glow))]">
-                Foundations · Slide 03
+                Foundations · Slide 04
               </span>
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
@@ -612,9 +606,8 @@ const Distributed = () => {
           </section>
         </div>
         
-        <SlideNav prev="/agenda" next="/scalability" />
-      </main>
-    </TooltipProvider>
+        <SlideNav prev="/cap" next="/scalability" />
+    </main>
   );
 };
 

@@ -138,7 +138,7 @@ const Agenda = () => {
           </section>
         </div>
 
-        <SlideNav prev="/" next="/distributed" />
+        <SlideNav prev="/" next="/cap" />
       </main>
     </TooltipProvider>
   );
