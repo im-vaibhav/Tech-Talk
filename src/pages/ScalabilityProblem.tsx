@@ -442,13 +442,7 @@ const ScalabilityProblem = () => {
         )}
 
         {/* Bottom Row */}
-        <div className="mt-auto flex items-end justify-between pt-3">
-          <p
-            className="max-w-sm text-xs italic text-muted-foreground opacity-0"
-            style={{ animation: "fade-in-left 0.6s 1.5s ease-out both" }}
-          >
-            "One cashier at a supermarket during Black Friday. The line wraps around the building. Do you make the cashier faster? Or open more lanes?"
-          </p>
+        <div className="mt-auto flex items-end justify-end pt-3">
           <div className="opacity-0" style={{ animation: "fade-in-right 0.6s 1.5s ease-out both" }}>
             <EpamLogo />
           </div>

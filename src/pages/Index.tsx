@@ -74,7 +74,7 @@ const Index = () => {
 
         {/* Bottom: Speakers + Logo */}
         <footer className="flex flex-col items-start justify-between gap-8 border-t border-border/40 pt-8 sm:flex-row sm:items-end">
-          <div className="anim-speakers grid gap-4 sm:grid-cols-2 sm:gap-12">
+          <div className="anim-speakers grid gap-4 sm:grid-cols-3 sm:gap-10">
             <div>
               <p className="text-base font-semibold text-foreground lg:text-lg">Saad Ahmad</p>
               <p className="text-sm font-light text-muted-foreground">Aligarh Muslim University</p>
@@ -82,6 +82,10 @@ const Index = () => {
             <div>
               <p className="text-base font-semibold text-foreground lg:text-lg">Vaibhav Raj</p>
               <p className="text-sm font-light text-muted-foreground">NIT Raipur</p>
+            </div>
+            <div>
+              <p className="text-base font-semibold text-foreground lg:text-lg">Jakka Abhilash Reddy</p>
+              <p className="text-sm font-light text-muted-foreground">Keshav Memorial Institute of Technology</p>
             </div>
           </div>
 

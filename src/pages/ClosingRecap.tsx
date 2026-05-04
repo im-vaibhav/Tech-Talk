@@ -150,13 +150,18 @@ export default function ClosingRecap() {
           </p>
         </section>
 
-        {/* Thank You + Speaker + Q&A */}
+        {/* Thank You + Q&A */}
         <footer className="flex items-end justify-between border-t border-border/30 pt-4">
           <div className="opacity-0" style={fade(8.0)}>
             <p className="text-lg font-bold text-foreground">Thank You</p>
           </div>
           <div className="text-center opacity-0" style={fade(8.0)}>
-            <p className="text-sm font-semibold text-foreground">Saad Ahmad | Vaibhav Raj</p>
+            <p className="text-sm text-muted-foreground">
+              We'd love to hear your thoughts, questions, and ideas.
+            </p>
+            <p className="mt-1 text-xs font-semibold" style={{ color: TEAL_GLOW }}>
+              The floor is yours.
+            </p>
           </div>
           <div className="flex items-center gap-4 opacity-0" style={fade(8.3)}>
             <span className="rounded-full border border-[hsl(var(--teal-glow)/0.5)] px-3 py-1 text-xs font-bold" style={{ color: TEAL_GLOW }}>

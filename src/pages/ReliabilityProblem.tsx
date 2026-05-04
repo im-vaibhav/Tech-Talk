@@ -442,7 +442,7 @@ const ReliabilityProblem = () => {
         )}
       </div>
 
-      <SlideNav prev="/consistent-hashing" next="/replication" />
+      <SlideNav prev="/quorum" next="/replication" />
     </main>
   );
 };

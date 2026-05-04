@@ -422,10 +422,7 @@ const QuorumRerouting = () => {
         {/* Bottom Row */}
         {step >= 11 && (
           <div className="mt-4 flex items-end justify-between opacity-0" style={{ animation: "fade-in-smooth 0.8s ease-out both" }}>
-            <p className="max-w-md text-xs italic text-muted-foreground">
-              "A jury of 12. If 2 jurors are sick, the remaining 10 can still deliver a verdict. The trial continues. 
-              Meanwhile, security quietly redirects anyone who was walking toward the closed courtroom."
-            </p>
+
             <div>
               <EpamLogo />
             </div>
@@ -433,7 +430,7 @@ const QuorumRerouting = () => {
         )}
       </div>
 
-      <SlideNav prev="/swim" next="/bridge" />
+      <SlideNav prev="/swim" next="/reliability" />
     </main>
   );
 };

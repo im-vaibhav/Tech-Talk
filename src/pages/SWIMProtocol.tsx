@@ -647,10 +647,7 @@ const SWIMProtocol = () => {
             className="mt-4 flex items-end justify-between opacity-0"
             style={{ animation: "fade-in-smooth 1s 0.5s ease-out both" }}
           >
-            <p className="max-w-md text-xs italic text-muted-foreground">
-              "Colleagues checking in on each other every few minutes. If you can't reach someone, 
-              you ask a mutual friend to try. Only if nobody can reach them do you sound the alarm."
-            </p>
+
             <div>
               <EpamLogo />
             </div>
