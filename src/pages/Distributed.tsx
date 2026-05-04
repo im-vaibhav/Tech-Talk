@@ -19,7 +19,12 @@ const Distributed = () => {
     <TooltipProvider delayDuration={150}>
       <main className="relative min-h-screen w-full overflow-hidden bg-hero">
         <SlideBackdrop />
-
+      
+        {/* Logo in top-right corner */}
+        <div className="absolute right-8 top-8 z-20 opacity-0" style={{ animation: "fade-in-right 0.6s 0.3s ease-out both" }}>
+          <EpamLogo />
+        </div>
+      
         <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-10 py-10 lg:px-16 lg:py-12">
           {/* Heading */}
           <header
@@ -605,16 +610,8 @@ const Distributed = () => {
               </Tooltip>
             </div>
           </section>
-
-          {/* Logo */}
-          <div
-            className="mt-4 flex justify-end opacity-0"
-            style={{ animation: "fade-in-right 0.6s 3.6s ease-out both" }}
-          >
-            <EpamLogo />
-          </div>
         </div>
-
+        
         <SlideNav prev="/agenda" next="/scalability" />
       </main>
     </TooltipProvider>

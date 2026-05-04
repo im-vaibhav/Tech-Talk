@@ -14,7 +14,12 @@ export default function AgenticOps() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-hero">
       <SlideBackdrop />
-
+    
+      {/* Logo in top-right corner */}
+      <div className="absolute right-8 top-8 z-20 opacity-0" style={{ animation: "fade-in-right 0.6s 0.3s ease-out both" }}>
+        <EpamLogo />
+      </div>
+    
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-10 py-6 lg:px-14 lg:py-8">
         {/* Header */}
         <header className="mb-3">
@@ -234,15 +239,8 @@ export default function AgenticOps() {
             </div>
           </aside>
         </section>
-
-        {/* Footer */}
-        <footer className="mt-4 flex items-end justify-end">
-          <div className="opacity-0" style={fade(9.3)}>
-            <EpamLogo />
-          </div>
-        </footer>
       </div>
-
+      
       <SlideNav prev="/observability" next="/trigger-modes" />
     </main>
   );

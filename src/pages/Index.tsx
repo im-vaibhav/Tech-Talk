@@ -46,6 +46,11 @@ const Index = () => {
       <div aria-hidden className="absolute -top-32 -left-32 h-[500px] w-[500px] rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--blue) / 0.18), transparent 70%)" }} />
       <div aria-hidden className="absolute -bottom-40 -right-32 h-[600px] w-[600px] rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--teal) / 0.15), transparent 70%)" }} />
 
+      {/* Logo in top-right corner */}
+      <div className="absolute right-8 top-8 z-20 opacity-0" style={{ animation: "fade-in-right 0.6s 0.3s ease-out both" }}>
+        <EpamLogo />
+      </div>
+      
       {/* Slide content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-12 py-12 lg:px-20 lg:py-16">
         {/* Top: Title + subtitle */}
@@ -72,8 +77,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Bottom: Speakers + Logo */}
-        <footer className="flex flex-col items-start justify-between gap-8 border-t border-border/40 pt-8 sm:flex-row sm:items-end">
+        {/* Bottom: Speakers */}
+        <footer className="flex flex-col items-start justify-between gap-8 border-t border-border/40 pt-8">
           <div className="anim-speakers grid gap-4 sm:grid-cols-3 sm:gap-10">
             <div>
               <p className="text-base font-semibold text-foreground lg:text-lg">Saad Ahmad</p>
@@ -87,10 +92,6 @@ const Index = () => {
               <p className="text-base font-semibold text-foreground lg:text-lg">Jakka Abhilash Reddy</p>
               <p className="text-sm font-light text-muted-foreground">Keshav Memorial Institute of Technology</p>
             </div>
-          </div>
-
-          <div className="anim-logo">
-            <EpamLogo />
           </div>
         </footer>
       </div>

@@ -51,7 +51,12 @@ export default function ClosingRecap() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-hero">
       <SlideBackdrop />
-
+    
+      {/* Logo in top-right corner */}
+      <div className="absolute right-8 top-8 z-20 opacity-0" style={{ animation: "fade-in-right 0.6s 0.3s ease-out both" }}>
+        <EpamLogo />
+      </div>
+    
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-10 py-6 lg:px-14 lg:py-8">
         {/* Header */}
         <header className="mb-5">
@@ -162,11 +167,10 @@ export default function ClosingRecap() {
             <span className="rounded-full border border-[hsl(var(--teal-glow)/0.5)] px-3 py-1 text-xs font-bold" style={{ color: TEAL_GLOW }}>
               Q&A
             </span>
-            <EpamLogo />
           </div>
         </footer>
       </div>
-
+      
       <SlideNav prev="/human-approval" />
     </main>
   );

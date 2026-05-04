@@ -38,6 +38,11 @@ const QuorumRerouting = () => {
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-hero">
       <SlideBackdrop />
+  
+      {/* Logo in top-right corner */}
+      <div className="absolute right-8 top-8 z-20 opacity-0" style={{ animation: "fade-in-right 0.6s 0.3s ease-out both" }}>
+        <EpamLogo />
+      </div>
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-10 py-8 lg:px-16 lg:py-10">
         
@@ -418,18 +423,8 @@ const QuorumRerouting = () => {
             </div>
           </section>
         )}
-
-        {/* Bottom Row */}
-        {step >= 11 && (
-          <div className="mt-4 flex items-end justify-between opacity-0" style={{ animation: "fade-in-smooth 0.8s ease-out both" }}>
-
-            <div>
-              <EpamLogo />
-            </div>
-          </div>
-        )}
       </div>
-
+      
       <SlideNav prev="/swim" next="/reliability" />
     </main>
   );

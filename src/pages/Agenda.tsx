@@ -38,7 +38,12 @@ const Agenda = () => {
     <TooltipProvider delayDuration={150}>
       <main className="relative min-h-screen w-full overflow-hidden bg-hero">
         <SlideBackdrop />
-
+    
+        {/* Logo in top-right corner */}
+        <div className="absolute right-8 top-8 z-20 opacity-0" style={{ animation: "fade-in-right 0.6s 0.3s ease-out both" }}>
+          <EpamLogo />
+        </div>
+    
         <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-12 py-12 lg:px-20 lg:py-16">
           {/* Heading */}
           <header className="anim-title mb-8">
@@ -131,13 +136,6 @@ const Agenda = () => {
               })}
             </div>
           </section>
-
-          {/* Footer */}
-          <footer className="mt-8 flex items-end justify-end gap-6 border-t border-border/40 pt-6">
-            <div className="opacity-0" style={{ animation: "fade-in-right 0.6s 2.4s ease-out both" }}>
-              <EpamLogo />
-            </div>
-          </footer>
         </div>
 
         <SlideNav prev="/" next="/distributed" />

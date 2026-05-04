@@ -70,8 +70,8 @@ const ConsistentHashing = () => {
   }, []);
 
   const centerX = 250;
-  const centerY = 230;
-  const radius = 150;
+  const centerY = 250;
+  const radius = 200;
 
   // 3 initial servers (matching the LB slide)
   const serverData = [
@@ -201,10 +201,15 @@ const ConsistentHashing = () => {
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-hero">
       <SlideBackdrop />
+  
+      {/* Logo in top-right corner */}
+      <div className="absolute right-8 top-8 z-20 opacity-0" style={{ animation: "fade-in-right 0.6s 0.3s ease-out both" }}>
+        <EpamLogo />
+      </div>
 
       <style>{`
         @keyframes ring-draw {
-          from { stroke-dashoffset: 944; }
+          from { stroke-dashoffset: 1; }
           to { stroke-dashoffset: 0; }
         }
         @keyframes node-pop {
@@ -289,7 +294,7 @@ const ConsistentHashing = () => {
 
             {/* Hash Ring SVG */}
             <div className="relative" key={isReplaying ? `replay-${replayKey}` : "main"}>
-              <svg viewBox="0 0 500 480" className="h-[400px] w-[400px]">
+              <svg viewBox="0 0 500 500" className="h-[500px] w-[500px]">
                 <defs>
                   <filter id="glow-sm">
                     <feGaussianBlur stdDeviation="2" result="blur" />
@@ -308,8 +313,9 @@ const ConsistentHashing = () => {
                     stroke="hsl(var(--teal-glow))"
                     strokeWidth="2.5"
                     opacity="0.5"
-                    strokeDasharray="944"
-                    strokeDashoffset="944"
+                    pathLength={1}
+                    strokeDasharray="1"
+                    strokeDashoffset="1"
                     style={{ animation: "ring-draw 2s 0.3s ease-out both" }}
                   />
                 )}
@@ -594,15 +600,8 @@ const ConsistentHashing = () => {
             <p className="mt-1 text-[11px] text-muted-foreground">Add/remove 1 server → only nearby keys move → system stays stable</p>
           </div>
         </div>
-
-        {/* Bottom Row */}
-        <div className="mt-auto flex items-end justify-end pt-2">
-          <div className="opacity-0" style={{ animation: "fade-in-right 0.8s 2s ease-out both" }}>
-            <EpamLogo />
-          </div>
-        </div>
       </div>
-
+      
       <SlideNav prev="/load-balancing" next="/availability" />
     </main>
   );

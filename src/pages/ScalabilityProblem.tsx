@@ -102,6 +102,11 @@ const ScalabilityProblem = () => {
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-hero">
       <SlideBackdrop />
+  
+      {/* Logo in top-right corner */}
+      <div className="absolute right-8 top-8 z-20 opacity-0" style={{ animation: "fade-in-right 0.6s 0.3s ease-out both" }}>
+        <EpamLogo />
+      </div>
 
       {/* Custom keyframes for request dot animations */}
       <style>{`
@@ -440,15 +445,8 @@ const ScalabilityProblem = () => {
             </div>
           </section>
         )}
-
-        {/* Bottom Row */}
-        <div className="mt-auto flex items-end justify-end pt-3">
-          <div className="opacity-0" style={{ animation: "fade-in-right 0.6s 1.5s ease-out both" }}>
-            <EpamLogo />
-          </div>
-        </div>
       </div>
-
+      
       <SlideNav prev="/distributed" next="/load-balancing" />
     </main>
   );
