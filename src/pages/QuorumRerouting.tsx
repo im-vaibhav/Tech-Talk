@@ -421,7 +421,8 @@ const QuorumRerouting = () => {
 
         {/* Bottom Row */}
         {step >= 11 && (
-          <div className="mt-4 flex items-end justify-end opacity-0" style={{ animation: "fade-in-smooth 0.8s ease-out both" }}>
+          <div className="mt-4 flex items-end justify-between opacity-0" style={{ animation: "fade-in-smooth 0.8s ease-out both" }}>
+
             <div>
               <EpamLogo />
             </div>
@@ -429,7 +430,7 @@ const QuorumRerouting = () => {
         )}
       </div>
 
-      <SlideNav prev="/swim" next="/bridge" />
+      <SlideNav prev="/swim" next="/reliability" />
     </main>
   );
 };

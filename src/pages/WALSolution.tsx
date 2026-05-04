@@ -401,7 +401,7 @@ const WALSolution = () => {
         )}
       </div>
 
-      <SlideNav prev="/replication" next="/availability" />
+      <SlideNav prev="/replication" next="/bridge" />
     </main>
   );
 };

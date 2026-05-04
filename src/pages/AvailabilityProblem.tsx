@@ -385,7 +385,7 @@ const AvailabilityProblem = () => {
         )}
       </div>
 
-      <SlideNav prev="/wal" next="/swim" />
+      <SlideNav prev="/consistent-hashing" next="/swim" />
     </main>
   );
 };

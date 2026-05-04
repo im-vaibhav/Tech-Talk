@@ -511,7 +511,7 @@ const EdgeFabricBridge = () => {
         )}
       </div>
 
-      <SlideNav prev="/quorum" next="/observability" />
+      <SlideNav prev="/wal" next="/observability" />
     </main>
   );
 };

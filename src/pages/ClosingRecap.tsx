@@ -150,7 +150,7 @@ export default function ClosingRecap() {
           </p>
         </section>
 
-        {/* Thank You + Speaker + Q&A */}
+        {/* Thank You + Q&A */}
         <footer className="flex items-end justify-between border-t border-border/30 pt-4">
           <div className="opacity-0" style={fade(8.0)}>
             <p className="text-lg font-bold text-foreground">Thank You</p>

@@ -647,6 +647,7 @@ const SWIMProtocol = () => {
             className="mt-4 flex items-end justify-end opacity-0"
             style={{ animation: "fade-in-smooth 1s 0.5s ease-out both" }}
           >
+
             <div>
               <EpamLogo />
             </div>
