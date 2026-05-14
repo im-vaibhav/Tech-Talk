@@ -7,6 +7,8 @@ const QuorumRerouting = () => {
   const [step, setStep] = useState(0);
   const [paused, setPaused] = useState(false);
   const animationStarted = useRef(false);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   useEffect(() => {
     if (animationStarted.current) return;
@@ -16,12 +18,12 @@ const QuorumRerouting = () => {
   useEffect(() => {
     if (paused) return;
     
-    // 2.5 seconds per step (slower, clear)
+    // 2.5 seconds per step (slightly faster)
     const timer = setTimeout(() => {
       if (step < 12) {
         setStep(s => s + 1);
       }
-    }, 2500);
+    }, t(2500));
 
     return () => clearTimeout(timer);
   }, [step, paused]);
@@ -68,6 +70,7 @@ const QuorumRerouting = () => {
           >
             A majority decides. Traffic moves in seconds. Users never notice.
           </p>
+          <p className="mt-1 text-[10px] text-muted-foreground">Animation: one node drops, quorum holds, and routes rewire automatically.</p>
         </header>
 
         {/* Controls */}

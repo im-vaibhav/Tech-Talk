@@ -6,6 +6,8 @@ import SlideNav from "@/components/SlideNav";
 const WALSolution = () => {
   const [phase, setPhase] = useState(0);
   const animationStarted = useRef(false);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   useEffect(() => {
     if (animationStarted.current) return;
@@ -13,24 +15,24 @@ const WALSolution = () => {
 
     // SLOW timeline - 33+ seconds total
     const timers = [
-      setTimeout(() => setPhase(1), 2000),   // Part A label
-      setTimeout(() => setPhase(2), 3500),   // Client appears
-      setTimeout(() => setPhase(3), 5000),   // Write request
-      setTimeout(() => setPhase(4), 7000),   // Step 1: Log to WAL
-      setTimeout(() => setPhase(5), 9000),   // WAL shows entry
-      setTimeout(() => setPhase(6), 11000),  // Step 2: Write to data store
-      setTimeout(() => setPhase(7), 13000),  // Data store shows entry
-      setTimeout(() => setPhase(8), 15000),  // Step 3: Success response
-      setTimeout(() => setPhase(9), 17000),  // Success message to client
-      setTimeout(() => setPhase(10), 19000), // Part B label
-      setTimeout(() => setPhase(11), 20500), // Crashed node appears
-      setTimeout(() => setPhase(12), 22000), // Restart animation
-      setTimeout(() => setPhase(13), 24000), // Load snapshot
-      setTimeout(() => setPhase(14), 26000), // Snapshot data shown
-      setTimeout(() => setPhase(15), 28000), // Replay WAL
-      setTimeout(() => setPhase(16), 30000), // Apply missing entries
-      setTimeout(() => setPhase(17), 32000), // Recovered state
-      setTimeout(() => setPhase(18), 34000), // Info cards appear
+      setTimeout(() => setPhase(1), t(2000)),   // Part A label
+      setTimeout(() => setPhase(2), t(3500)),   // Client appears
+      setTimeout(() => setPhase(3), t(5000)),   // Write request
+      setTimeout(() => setPhase(4), t(7000)),   // Step 1: Log to WAL
+      setTimeout(() => setPhase(5), t(9000)),   // WAL shows entry
+      setTimeout(() => setPhase(6), t(11000)),  // Step 2: Write to data store
+      setTimeout(() => setPhase(7), t(13000)),  // Data store shows entry
+      setTimeout(() => setPhase(8), t(15000)),  // Step 3: Success response
+      setTimeout(() => setPhase(9), t(17000)),  // Success message to client
+      setTimeout(() => setPhase(10), t(19000)), // Part B label
+      setTimeout(() => setPhase(11), t(20500)), // Crashed node appears
+      setTimeout(() => setPhase(12), t(22000)), // Restart animation
+      setTimeout(() => setPhase(13), t(24000)), // Load snapshot
+      setTimeout(() => setPhase(14), t(26000)), // Snapshot data shown
+      setTimeout(() => setPhase(15), t(28000)), // Replay WAL
+      setTimeout(() => setPhase(16), t(30000)), // Apply missing entries
+      setTimeout(() => setPhase(17), t(32000)), // Recovered state
+      setTimeout(() => setPhase(18), t(34000)), // Info cards appear
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -69,6 +71,7 @@ const WALSolution = () => {
           >
             Log intent first. Crash between log and commit? Recoverable.
           </p>
+          <p className="mt-1 text-[10px] text-muted-foreground">Animation: log entry appears before the data write, then replay restores state.</p>
         </header>
 
         {/* Main Content - Two Parts Stacked */}

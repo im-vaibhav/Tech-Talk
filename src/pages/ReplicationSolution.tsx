@@ -10,6 +10,8 @@ const ReplicationSolution = () => {
   const [modeKey, setModeKey] = useState(0);
   const animationStarted = useRef(false);
   const modeTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   // Auto animation: Replication → crash → Read Repair → done
   useEffect(() => {
@@ -17,16 +19,16 @@ const ReplicationSolution = () => {
     animationStarted.current = true;
 
     const timers = [
-      setTimeout(() => setPhase(1), 2000),   // 3 empty nodes appear
-      setTimeout(() => setPhase(2), 4500),   // Client sends write "X=42"
-      setTimeout(() => setPhase(3), 7000),   // Data replicates to all 3 nodes
-      setTimeout(() => setPhase(4), 10000),  // RF=3 label, all healthy
-      setTimeout(() => setPhase(5), 13000),  // Node A crashes
-      setTimeout(() => setPhase(6), 16000),  // "Data safe" message
-      setTimeout(() => setPhase(7), 19500),  // READ: Client reads, Node C returns stale "39"
-      setTimeout(() => setPhase(8), 23000),  // Mismatch detected
-      setTimeout(() => setPhase(9), 26000),  // Repair: Node C corrected to "42"
-      setTimeout(() => setPhase(10), 29000), // "Fixed automatically" + buttons appear
+      setTimeout(() => setPhase(1), t(2000)),   // 3 empty nodes appear
+      setTimeout(() => setPhase(2), t(4500)),   // Client sends write "X=42"
+      setTimeout(() => setPhase(3), t(7000)),   // Data replicates to all 3 nodes
+      setTimeout(() => setPhase(4), t(10000)),  // RF=3 label, all healthy
+      setTimeout(() => setPhase(5), t(13000)),  // Node A crashes
+      setTimeout(() => setPhase(6), t(16000)),  // "Data safe" message
+      setTimeout(() => setPhase(7), t(19500)),  // READ: Client reads, Node C returns stale "39"
+      setTimeout(() => setPhase(8), t(23000)),  // Mismatch detected
+      setTimeout(() => setPhase(9), t(26000)),  // Repair: Node C corrected to "42"
+      setTimeout(() => setPhase(10), t(29000)), // "Fixed automatically" + buttons appear
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -45,12 +47,12 @@ const ReplicationSolution = () => {
     setModeKey(k => k + 1);
 
     const timers = [
-      setTimeout(() => setModePhase(1), 800),    // 3 empty nodes
-      setTimeout(() => setModePhase(2), 3500),   // Client sends write
-      setTimeout(() => setModePhase(3), 6500),   // Data replicates
-      setTimeout(() => setModePhase(4), 9500),   // RF=3, all healthy
-      setTimeout(() => setModePhase(5), 12500),  // Node A crashes
-      setTimeout(() => setModePhase(6), 15500),  // Data safe message
+      setTimeout(() => setModePhase(1), t(800)),    // 3 empty nodes
+      setTimeout(() => setModePhase(2), t(3500)),   // Client sends write
+      setTimeout(() => setModePhase(3), t(6500)),   // Data replicates
+      setTimeout(() => setModePhase(4), t(9500)),   // RF=3, all healthy
+      setTimeout(() => setModePhase(5), t(12500)),  // Node A crashes
+      setTimeout(() => setModePhase(6), t(15500)),  // Data safe message
     ];
     modeTimers.current = timers;
   }, []);
@@ -62,11 +64,11 @@ const ReplicationSolution = () => {
     setModeKey(k => k + 1);
 
     const timers = [
-      setTimeout(() => setModePhase(1), 800),    // 3 nodes (A=42, B=42, C=39 stale)
-      setTimeout(() => setModePhase(2), 3500),   // Client reads
-      setTimeout(() => setModePhase(3), 6500),   // Responses come back, mismatch highlighted
-      setTimeout(() => setModePhase(4), 10000),  // Repair arrow → C fixed
-      setTimeout(() => setModePhase(5), 13000),  // "Fixed automatically"
+      setTimeout(() => setModePhase(1), t(800)),    // 3 nodes (A=42, B=42, C=39 stale)
+      setTimeout(() => setModePhase(2), t(3500)),   // Client reads
+      setTimeout(() => setModePhase(3), t(6500)),   // Responses come back, mismatch highlighted
+      setTimeout(() => setModePhase(4), t(10000)),  // Repair arrow → C fixed
+      setTimeout(() => setModePhase(5), t(13000)),  // "Fixed automatically"
     ];
     modeTimers.current = timers;
   }, []);
@@ -202,6 +204,7 @@ const ReplicationSolution = () => {
           >
             Store multiple copies. If one crashes, data survives. If copies disagree, fix on the fly.
           </p>
+          <p className="mt-1 text-[10px] text-muted-foreground">Animation: write fans out, one node fails, then read repair corrects drift.</p>
         </header>
 
         {/* Connection to Reliability Problem */}

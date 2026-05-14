@@ -32,17 +32,19 @@ const FlowDot = ({ top, delay, duration, color, size = 7 }: DotProps) => (
 const LoadBalancingSolution = () => {
   const [phase, setPhase] = useState(0);
   const started = useRef(false);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   useEffect(() => {
     if (started.current) return;
     started.current = true;
 
     const timers = [
-      setTimeout(() => setPhase(1), 1500),   // 3 servers scale up
-      setTimeout(() => setPhase(2), 5000),   // Question: "Where does traffic go?"
-      setTimeout(() => setPhase(3), 8500),   // LB appears between client and servers
-      setTimeout(() => setPhase(4), 12000),  // Dots start flowing through LB to servers
-      setTimeout(() => setPhase(5), 17000),  // Transition questions appear one by one
+      setTimeout(() => setPhase(1), t(1500)),   // 3 servers scale up
+      setTimeout(() => setPhase(2), t(5000)),   // Question: "Where does traffic go?"
+      setTimeout(() => setPhase(3), t(8500)),   // LB appears between client and servers
+      setTimeout(() => setPhase(4), t(12000)),  // Dots start flowing through LB to servers
+      setTimeout(() => setPhase(5), t(17000)),  // Transition questions appear one by one
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -281,6 +283,7 @@ const LoadBalancingSolution = () => {
                 Traffic split evenly. All servers healthy. No single bottleneck.
               </p>
             )}
+            <p className="mt-1 text-[10px] text-muted-foreground">Animation: servers pop in, then flow dots split to show balanced routing.</p>
           </div>
         </section>
 

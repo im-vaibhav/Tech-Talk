@@ -143,6 +143,8 @@ const UDP_COLOR = "hsl(35 80% 60%)";
 const EdgeFabricBridge = () => {
   const [step, setStep] = useState(0);
   const started = useRef(false);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   useEffect(() => {
     if (started.current) return;
@@ -154,25 +156,25 @@ const EdgeFabricBridge = () => {
     // 5-7.5s gap
     // 7.5-9s close
     const timers = [
-      setTimeout(() => setStep(1), 1000),
-      setTimeout(() => setStep(2), 1300),
-      setTimeout(() => setStep(3), 1500),
-      setTimeout(() => setStep(4), 1700),
-      setTimeout(() => setStep(5), 2000),
-      setTimeout(() => setStep(6), 2500),
-      setTimeout(() => setStep(7), 2800),
-      setTimeout(() => setStep(8), 3000),
-      setTimeout(() => setStep(9), 3200),
-      setTimeout(() => setStep(10), 3400),
-      setTimeout(() => setStep(11), 3800),
-      setTimeout(() => setStep(12), 4000),
-      setTimeout(() => setStep(13), 5000),
-      setTimeout(() => setStep(14), 5300),
-      setTimeout(() => setStep(15), 5500),
-      setTimeout(() => setStep(16), 5800),
-      setTimeout(() => setStep(17), 6500),
-      setTimeout(() => setStep(18), 7500),
-      setTimeout(() => setStep(19), 8000),
+      setTimeout(() => setStep(1), t(1000)),
+      setTimeout(() => setStep(2), t(1300)),
+      setTimeout(() => setStep(3), t(1500)),
+      setTimeout(() => setStep(4), t(1700)),
+      setTimeout(() => setStep(5), t(2000)),
+      setTimeout(() => setStep(6), t(2500)),
+      setTimeout(() => setStep(7), t(2800)),
+      setTimeout(() => setStep(8), t(3000)),
+      setTimeout(() => setStep(9), t(3200)),
+      setTimeout(() => setStep(10), t(3400)),
+      setTimeout(() => setStep(11), t(3800)),
+      setTimeout(() => setStep(12), t(4000)),
+      setTimeout(() => setStep(13), t(5000)),
+      setTimeout(() => setStep(14), t(5300)),
+      setTimeout(() => setStep(15), t(5500)),
+      setTimeout(() => setStep(16), t(5800)),
+      setTimeout(() => setStep(17), t(6500)),
+      setTimeout(() => setStep(18), t(7500)),
+      setTimeout(() => setStep(19), t(8000)),
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -205,6 +207,7 @@ const EdgeFabricBridge = () => {
           <h1 className="text-3xl font-bold tracking-tight text-foreground opacity-0 lg:text-4xl" style={{ animation: "fade-in-smooth 0.6s 0.5s ease-out both" }}>
             We Built This. <span className="text-gradient-teal">Now How Do We Operate It?</span>
           </h1>
+          <p className="mt-1 text-[10px] text-muted-foreground">Animation: the architecture draws left-to-right, then the gap callout appears.</p>
         </header>
 
         {/* Diagram + Pillars */}

@@ -7,6 +7,8 @@ const SWIMProtocol = () => {
   const [step, setStep] = useState(0);
   const [paused, setPaused] = useState(false);
   const animationStarted = useRef(false);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   useEffect(() => {
     if (animationStarted.current) return;
@@ -16,12 +18,12 @@ const SWIMProtocol = () => {
   useEffect(() => {
     if (paused) return;
     
-    // 4 seconds per step
+    // 4 seconds per step (slightly faster)
     const timer = setTimeout(() => {
       if (step < 10) {
         setStep(s => s + 1);
       }
-    }, 4000);
+    }, t(4000));
 
     return () => clearTimeout(timer);
   }, [step, paused]);
@@ -104,6 +106,7 @@ const SWIMProtocol = () => {
           >
             Nodes check on each other. No single monitor. No single point of failure.
           </p>
+          <p className="mt-1 text-[10px] text-muted-foreground">Animation: direct pings fail, indirect probes confirm, then status flips.</p>
         </header>
 
         {/* Stage Indicator + Controls */}

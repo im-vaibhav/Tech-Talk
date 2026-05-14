@@ -6,6 +6,8 @@ import SlideNav from "@/components/SlideNav";
 const AvailabilityProblem = () => {
   const [phase, setPhase] = useState(0);
   const animationStarted = useRef(false);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   useEffect(() => {
     if (animationStarted.current) return;
@@ -13,16 +15,16 @@ const AvailabilityProblem = () => {
 
     // SLOWER 20-second animation timeline
     const timers = [
-      setTimeout(() => setPhase(1), 2000),   // Nodes appear
-      setTimeout(() => setPhase(2), 4000),   // Clients appear
-      setTimeout(() => setPhase(3), 6000),   // Normal traffic flows
-      setTimeout(() => setPhase(4), 8000),   // Node-2 crashes (silent)
-      setTimeout(() => setPhase(5), 10000),  // Clients still route to Node-2
-      setTimeout(() => setPhase(6), 12000),  // Timeouts accumulate
-      setTimeout(() => setPhase(7), 14000),  // Users get errors
-      setTimeout(() => setPhase(8), 16000),  // Manual intervention needed
-      setTimeout(() => setPhase(9), 18000),  // Impact cards appear
-      setTimeout(() => setPhase(10), 20000), // Analogy appears
+      setTimeout(() => setPhase(1), t(2000)),   // Nodes appear
+      setTimeout(() => setPhase(2), t(4000)),   // Clients appear
+      setTimeout(() => setPhase(3), t(6000)),   // Normal traffic flows
+      setTimeout(() => setPhase(4), t(8000)),   // Node-2 crashes (silent)
+      setTimeout(() => setPhase(5), t(10000)),  // Clients still route to Node-2
+      setTimeout(() => setPhase(6), t(12000)),  // Timeouts accumulate
+      setTimeout(() => setPhase(7), t(14000)),  // Users get errors
+      setTimeout(() => setPhase(8), t(16000)),  // Manual intervention needed
+      setTimeout(() => setPhase(9), t(18000)),  // Impact cards appear
+      setTimeout(() => setPhase(10), t(20000)), // Analogy appears
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -61,6 +63,7 @@ const AvailabilityProblem = () => {
           >
             What happens when a server dies at 3 AM?
           </p>
+          <p className="mt-1 text-[10px] text-muted-foreground">Animation: one node fades out while errors pile up to show user impact.</p>
         </header>
 
         {/* Main Visual - Distributed System Failure */}

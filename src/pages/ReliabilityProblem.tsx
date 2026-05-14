@@ -6,6 +6,8 @@ import SlideNav from "@/components/SlideNav";
 const ReliabilityProblem = () => {
   const [phase, setPhase] = useState(0);
   const animationStarted = useRef(false);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   useEffect(() => {
     if (animationStarted.current) return;
@@ -13,16 +15,16 @@ const ReliabilityProblem = () => {
 
     // MUCH SLOWER timeline - 20+ seconds
     const timers = [
-      setTimeout(() => setPhase(1), 2000),   // Client appears
-      setTimeout(() => setPhase(2), 4000),   // Write request sent
-      setTimeout(() => setPhase(3), 6000),   // Server receives
-      setTimeout(() => setPhase(4), 8000),   // Server processing (progress bar)
-      setTimeout(() => setPhase(5), 11000),  // Server crash (dramatic)
-      setTimeout(() => setPhase(6), 13000),  // Aftermath label
-      setTimeout(() => setPhase(7), 14000),  // Outcome 1
-      setTimeout(() => setPhase(8), 16000),  // Outcome 2
-      setTimeout(() => setPhase(9), 18000),  // Outcome 3
-      setTimeout(() => setPhase(10), 20000), // Why this hurts cards
+      setTimeout(() => setPhase(1), t(2000)),   // Client appears
+      setTimeout(() => setPhase(2), t(4000)),   // Write request sent
+      setTimeout(() => setPhase(3), t(6000)),   // Server receives
+      setTimeout(() => setPhase(4), t(8000)),   // Server processing (progress bar)
+      setTimeout(() => setPhase(5), t(11000)),  // Server crash (dramatic)
+      setTimeout(() => setPhase(6), t(13000)),  // Aftermath label
+      setTimeout(() => setPhase(7), t(14000)),  // Outcome 1
+      setTimeout(() => setPhase(8), t(16000)),  // Outcome 2
+      setTimeout(() => setPhase(9), t(18000)),  // Outcome 3
+      setTimeout(() => setPhase(10), t(20000)), // Why this hurts cards
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -61,6 +63,7 @@ const ReliabilityProblem = () => {
           >
             What if a server crashes mid-write?
           </p>
+          <p className="mt-1 text-[10px] text-muted-foreground">Animation: progress advances, then the crash locks in uncertainty.</p>
         </header>
 
         {/* Main Visual - Horizontal Flow with Clear Labels */}

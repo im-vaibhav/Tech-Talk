@@ -1,73 +1,61 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import EpamLogo from "@/components/EpamLogo";
 import SlideBackdrop from "@/components/SlideBackdrop";
 import SlideNav from "@/components/SlideNav";
 
 const ConsistentHashing = () => {
   const [phase, setPhase] = useState(0);
+  const [paused, setPaused] = useState(false);
   const [replayMode, setReplayMode] = useState<"none" | "add" | "remove">("none");
   const [replayPhase, setReplayPhase] = useState(0);
   const [replayKey, setReplayKey] = useState(0);
   const animationStarted = useRef(false);
-  const replayTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const SPEED = 0.85;
+  const t = useCallback((ms: number) => Math.round(ms * SPEED), [SPEED]);
 
-  // Initial auto-animation
+  // Initial auto-animation (step-based for pause support)
+  const phaseDurations = useMemo(() => [t(2500), t(3500), t(4000), t(4000), t(4500), t(5500), t(5500)], [t]);
   useEffect(() => {
     if (animationStarted.current) return;
     animationStarted.current = true;
-
-    const timers = [
-      setTimeout(() => setPhase(1), 2500),   // Ring draws
-      setTimeout(() => setPhase(2), 6000),   // 3 servers appear
-      setTimeout(() => setPhase(3), 10000),  // Keys appear
-      setTimeout(() => setPhase(4), 14000),  // Keys connect to servers (clockwise assignment)
-      setTimeout(() => setPhase(5), 18500),  // Add Server 4 + show rebalance
-      setTimeout(() => setPhase(6), 24000),  // Remove Server 2 + show rebalance
-      setTimeout(() => setPhase(7), 29500),  // Final state + buttons appear
-    ];
-
-    return () => timers.forEach(clearTimeout);
   }, []);
+  useEffect(() => {
+    if (paused) return;
+    if (phase >= 7) return;
+    if (replayMode !== "none") return;
 
-  // Replay logic
-  const clearReplayTimers = () => {
-    replayTimers.current.forEach(clearTimeout);
-    replayTimers.current = [];
-  };
+    const timer = setTimeout(() => {
+      setPhase(p => Math.min(p + 1, 7));
+    }, phaseDurations[phase] ?? t(4000));
+
+    return () => clearTimeout(timer);
+  }, [phase, paused, replayMode, phaseDurations]);
 
   const handleReplayAdd = useCallback(() => {
-    clearReplayTimers();
     setReplayMode("add");
     setReplayPhase(0);
     setReplayKey(k => k + 1);
-
-    const timers = [
-      setTimeout(() => setReplayPhase(1), 800),    // Show ring + 3 servers + keys connected
-      setTimeout(() => setReplayPhase(2), 4000),   // Add Server 4
-      setTimeout(() => setReplayPhase(3), 7000),   // Show which keys moved
-      setTimeout(() => setReplayPhase(4), 11000),  // Done - show summary
-    ];
-    replayTimers.current = timers;
+    setPaused(false);
   }, []);
 
   const handleReplayRemove = useCallback(() => {
-    clearReplayTimers();
     setReplayMode("remove");
     setReplayPhase(0);
     setReplayKey(k => k + 1);
-
-    const timers = [
-      setTimeout(() => setReplayPhase(1), 800),    // Show ring + 3 servers + keys connected
-      setTimeout(() => setReplayPhase(2), 4000),   // Remove Server 2
-      setTimeout(() => setReplayPhase(3), 7000),   // Show which keys moved
-      setTimeout(() => setReplayPhase(4), 11000),  // Done - show summary
-    ];
-    replayTimers.current = timers;
+    setPaused(false);
   }, []);
-
+  const replayDurations = useMemo(() => [t(800), t(3200), t(3000), t(4000)], [t]);
   useEffect(() => {
-    return () => clearReplayTimers();
-  }, []);
+    if (paused) return;
+    if (replayMode === "none") return;
+    if (replayPhase >= 4) return;
+
+    const timer = setTimeout(() => {
+      setReplayPhase(p => Math.min(p + 1, 4));
+    }, replayDurations[replayPhase] ?? t(3000));
+
+    return () => clearTimeout(timer);
+  }, [paused, replayMode, replayPhase, replayDurations]);
 
   const centerX = 250;
   const centerY = 250;
@@ -196,10 +184,10 @@ const ConsistentHashing = () => {
   const showServers = isReplaying ? replayPhase >= 1 : phase >= 2;
   const showKeys = isReplaying ? replayPhase >= 1 : phase >= 3;
   const showConnections = isReplaying ? replayPhase >= 1 : phase >= 4;
-  const showButtons = phase >= 7;
+  const showButtons = true;
 
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-hero">
+    <main className="relative min-h-screen w-full overflow-hidden bg-hero" data-paused={paused ? "true" : "false"}>
       <SlideBackdrop />
   
       {/* Logo in top-right corner */}
@@ -208,6 +196,9 @@ const ConsistentHashing = () => {
       </div>
 
       <style>{`
+        main[data-paused="true"] * {
+          animation-play-state: paused !important;
+        }
         @keyframes ring-draw {
           from { stroke-dashoffset: 1; }
           to { stroke-dashoffset: 0; }
@@ -218,8 +209,8 @@ const ConsistentHashing = () => {
           100% { opacity: 1; transform: scale(1); }
         }
         @keyframes connection-draw {
-          from { stroke-dashoffset: 200; opacity: 0.3; }
-          to { stroke-dashoffset: 0; opacity: 0.45; }
+          from { stroke-dashoffset: 1; opacity: 0.3; }
+          to { stroke-dashoffset: 0; opacity: 0.6; }
         }
         @keyframes key-glow-moved {
           0%, 100% { filter: drop-shadow(0 0 4px hsl(28, 90%, 55%)); }
@@ -397,10 +388,11 @@ const ConsistentHashing = () => {
                           x2={assignedPos.x} y2={assignedPos.y}
                           stroke={assigned.color}
                           strokeWidth="1.5"
-                          strokeDasharray="200"
-                          strokeDashoffset="200"
+                          pathLength={1}
+                          strokeDasharray="1"
+                          strokeDashoffset="1"
                           opacity="0"
-                          style={{ animation: `connection-draw 1.5s ${1 + idx * 0.4}s ease-out both` }}
+                          style={{ animation: `connection-draw 1.2s ${1 + idx * 0.4}s ease-out both` }}
                         />
                       )}
 
@@ -559,20 +551,32 @@ const ConsistentHashing = () => {
               {/* Replay Buttons */}
               {showButtons && (
                 <div className="flex flex-col gap-2 opacity-0" style={{ animation: "fade-in-smooth 0.8s 0.5s ease-out both" }}>
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Controls</p>
+                  <button
+                    onClick={() => setPaused(p => !p)}
+                    className="rounded-lg border border-border/50 bg-card/40 px-3 py-2 text-left text-xs font-medium text-foreground transition-all hover:bg-card/60 active:scale-95"
+                  >
+                    {paused ? "▶ Resume Animation" : "⏸ Pause Animation"}
+                  </button>
                   <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Replay Demo</p>
                   <button
                     onClick={handleReplayAdd}
                     className="rounded-lg border border-[hsl(var(--teal-glow)/0.5)] bg-[hsl(var(--teal)/0.1)] px-3 py-2 text-left text-xs font-medium text-[hsl(var(--teal-glow))] transition-all hover:bg-[hsl(var(--teal)/0.2)] active:scale-95"
                     style={{ animation: "btn-pulse 3s 1s ease-in-out infinite" }}
                   >
-                    <span className="mr-1.5">＋</span> Replay: Add Server
+                    <span className="mr-1.5">＋</span> Replay: Add Server (minimal key moves)
                   </button>
                   <button
                     onClick={handleReplayRemove}
                     className="rounded-lg border border-[hsl(28,90%,55%,0.5)] bg-[hsl(28,90%,55%,0.08)] px-3 py-2 text-left text-xs font-medium text-[hsl(28,90%,60%)] transition-all hover:bg-[hsl(28,90%,55%,0.15)] active:scale-95"
                   >
-                    <span className="mr-1.5">－</span> Replay: Remove Server
+                    <span className="mr-1.5">－</span> Replay: Remove Server (keys reassign CW)
                   </button>
+                  {replayMode !== "none" && (
+                    <p className="text-[10px] text-muted-foreground">
+                      Now showing: {replayMode === "add" ? "Add Server" : "Remove Server"} replay
+                    </p>
+                  )}
                 </div>
               )}
             </div>

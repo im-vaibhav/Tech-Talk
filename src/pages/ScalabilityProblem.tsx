@@ -37,16 +37,18 @@ const RequestDot = ({ top, delay, duration, color, size = 8, dropped = false }: 
 const ScalabilityProblem = () => {
   const [phase, setPhase] = useState(0);
   const animationStarted = useRef(false);
+  const SPEED = 0.85;
+  const t = (ms: number) => Math.round(ms * SPEED);
 
   useEffect(() => {
     if (animationStarted.current) return;
     animationStarted.current = true;
 
     const timers = [
-      setTimeout(() => setPhase(1), 1500),   // Stage 1: Normal Load
-      setTimeout(() => setPhase(2), 5500),   // Stage 2: Moderate Spike
-      setTimeout(() => setPhase(3), 10000),  // Stage 3: Massive Surge
-      setTimeout(() => setPhase(4), 14500),  // Stage 4: Questions
+      setTimeout(() => setPhase(1), t(1500)),   // Stage 1: Normal Load
+      setTimeout(() => setPhase(2), t(5500)),   // Stage 2: Moderate Spike
+      setTimeout(() => setPhase(3), t(10000)),  // Stage 3: Massive Surge
+      setTimeout(() => setPhase(4), t(14500)),  // Stage 4: Questions
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -173,6 +175,7 @@ const ScalabilityProblem = () => {
               {phase === 3 && "Stage 3 · Massive Surge (10×)"}
               {phase === 4 && "⚠ What now?"}
             </p>
+            <p className="mt-1 text-[10px] text-muted-foreground">Requests speed up and crowd the lane to visualize overload building.</p>
           </div>
 
           {/* Main Animation Container */}
